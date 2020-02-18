@@ -24,13 +24,16 @@ export const todoReducer = (state, action) => {
                 todoArray: [...state.todoArray, newTodo]      
             };
         case 'TOGGLE_COMPLETED' :
+            console.log("wah");
             return {
                 ...state,
                 completed: !state.completed
             };    
+           
         case 'CLEAR_COMPLETED' :
+            
             return {
-                
+               todoArray: state.todoArray.filter(item => !item.completed)
             }    
     }
 }

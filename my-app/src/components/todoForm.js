@@ -15,8 +15,6 @@ export const ToDoForm = (props) => {
     setNewItem(e.target.value);
   };
 
-
-
   const handleSubmit = e => {
       e.preventDefault()
       addTodo(newItem)

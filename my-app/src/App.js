@@ -27,7 +27,7 @@ const ToDo = () => {
       <h1>Your To-Do List</h1>
       <div>
         <ToDoForm addTodo={addTodo} toggleCompleted={toggleCompleted} clearCompleted={clearCompleted} />
-        <ToDoList todo={state.todoArray} />
+        <ToDoList todo={state.todoArray} toggleCompleted={toggleCompleted} />
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ const ToDoCard = ({todo, toggleCompleted}) => {
     const [toggle, setToggle] = useState('')
     
     const switchToggle = event => {
+        
         toggleCompleted(id)
     }
     useEffect(() => {
