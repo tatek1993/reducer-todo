@@ -2,43 +2,36 @@ import React, { useState, useReducer } from 'react';
 
 import { todoReducer, initialState } from './reducers/todoReducer';
 
-import { ToDoList } from './todoList';
-
+import { ToDoList } from './components/todoList';
+import { ToDoForm } from './components/todoForm';
 import './App.css';
 
 const ToDo = () => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  const [newItem, setNewItem] = useState('');
+  const addTodo = newItem => {
+    dispatch({ type: 'ADD_TODO', payload: newItem })
+  }
 
-  const handleChanges = e => {
-    setNewItem(e.target.value);
-  };
+  const toggleCompleted = () => {
+    dispatch({ type: 'TOGGLE_COMPLETED'})
+  }
+
+  const clearCompleted = () => {
+    dispatch({ type: 'CLEAR_COMPLETED'})
+  }
 
   console.log('this is state', state);
   return (
     <div>
       <h1>Your To-Do List</h1>
       <div>
-        <input
-          className="new-item"
-          type="text"
-          name="newItem"
-          value={newItem}
-          onChange={handleChanges}
-        />
-        <button
-          onClick={() => {
-            dispatch({ type: 'ADD_TODO', payload: newItem })
-          }}
-        >
-          Add 
-        </button>
-        <ToDoList todo={state.todos} />
+        <ToDoForm addTodo={addTodo} toggleCompleted={toggleCompleted} clearCompleted={clearCompleted} />
+        <ToDoList todo={state.todoArray} />
       </div>
     </div>
   )
 
-}
+};
 
 export default ToDo;
