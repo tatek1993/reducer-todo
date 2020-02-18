@@ -13,12 +13,12 @@ const ToDo = () => {
     dispatch({ type: 'ADD_TODO', payload: newItem })
   }
 
-  const toggleCompleted = () => {
-    dispatch({ type: 'TOGGLE_COMPLETED'})
+  const toggleCompleted = id => {
+    dispatch({ type: 'TOGGLE_COMPLETED', payload: id})
   }
 
-  const clearCompleted = () => {
-    dispatch({ type: 'CLEAR_COMPLETED'})
+  const clearCompleted = id => {
+    dispatch({ type: 'CLEAR_COMPLETED', payload: id})
   }
 
   console.log('this is state', state);

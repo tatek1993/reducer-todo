@@ -20,14 +20,22 @@ export const todoReducer = (state, action) => {
                 id: Date.now()
             }
             return {
-               
                 todoArray: [...state.todoArray, newTodo]      
             };
+
         case 'TOGGLE_COMPLETED' :
-            console.log("wah");
+            console.log("wah", action.payload);
             return {
                 ...state,
-                completed: !state.completed
+                todoArray: state.todoArray.map(todo => {                    
+                    if(todo.id === action.payload) {
+                        return { ...todo, completed: !todo.completed };
+                    } else {
+                       return todo;
+                    } 
+                }
+                   
+      )
             };    
            
         case 'CLEAR_COMPLETED' :
